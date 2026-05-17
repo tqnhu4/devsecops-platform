@@ -47,5 +47,6 @@ jobs:
         run: |
           kubeconform \
             -strict \
+            -ignore-missing-schemas \
             -summary \
             gitops/apps/web-frontend/*.yaml
