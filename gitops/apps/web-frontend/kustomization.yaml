@@ -1,0 +1,12 @@
+resources:
+  - deployment.yaml
+  - service.yaml
+  - ingress.yaml
+  - networkpolicy.yaml
+  - pdb.yaml
+  - hpa.yaml
+  - servicemonitor.yaml
+
+commonLabels:
+  app.kubernetes.io/name: web-frontend
+  app.kubernetes.io/managed-by: argocd

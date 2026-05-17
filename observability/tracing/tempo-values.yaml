@@ -1,0 +1,11 @@
+tempo:
+  retention: 24h
+
+serviceMonitor:
+  enabled: true
+
+persistence:
+  enabled: false
+
+metricsGenerator:
+  enabled: true

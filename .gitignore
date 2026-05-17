@@ -1,0 +1,39 @@
+# OS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Environment
+.env
+
+# Kubernetes
+*.kubeconfig
+
+# Cosign
+cosign.key
+
+# Terraform
+.terraform/
+*.tfstate
+
+# Node
+node_modules/
+
+# Build
+dist/
+build/
+
+# Coverage
+coverage/
+
+# Python
+__pycache__/
+
+# Temporary
+tmp/
+temp/

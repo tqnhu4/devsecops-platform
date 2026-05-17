@@ -1,0 +1,25 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+
+metadata:
+  name: pod-crashloop
+  namespace: monitoring
+
+spec:
+  groups:
+    - name: pod-alerts
+
+      rules:
+        - alert: PodCrashLooping
+
+          expr: |
+            increase(kube_pod_container_status_restarts_total[5m]) > 5
+
+          for: 2m
+
+          labels:
+            severity: critical
+
+          annotations:
+            summary: Pod crash looping
+            description: Pod restarted more than 5 times

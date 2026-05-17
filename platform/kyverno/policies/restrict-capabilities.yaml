@@ -1,0 +1,22 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+
+metadata:
+  name: restrict-capabilities
+
+spec:
+  validationFailureAction: enforce
+
+  rules:
+    - name: drop-capabilities
+
+      validate:
+        message: "All capabilities must be dropped"
+
+        pattern:
+          spec:
+            containers:
+              - securityContext:
+                  capabilities:
+                    drop:
+                      - ALL

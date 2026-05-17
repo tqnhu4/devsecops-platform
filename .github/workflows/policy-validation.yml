@@ -1,0 +1,35 @@
+name: Policy Validation
+
+on:
+
+  push:
+    branches:
+      - main
+
+  pull_request:
+
+jobs:
+
+  kyverno-policy-validation:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Kyverno CLI
+        run: |
+          curl -LO \
+          https://github.com/kyverno/kyverno/releases/latest/download/kyverno-cli_v1.13.0_linux_x86_64.tar.gz
+
+          tar -xvf kyverno-cli_v1.13.0_linux_x86_64.tar.gz
+
+          sudo mv kyverno /usr/local/bin/
+
+      - name: Validate Policies
+        run: |
+          kyverno apply \
+            platform/kyverno/policies/*.yaml \
+            --resource gitops/apps/web-frontend/deployment.yaml

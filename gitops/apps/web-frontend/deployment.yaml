@@ -1,0 +1,86 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: web-frontend
+  namespace: web
+
+  labels:
+    app: web-frontend
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: web-frontend
+
+  template:
+    metadata:
+      labels:
+        app: web-frontend
+
+    spec:
+
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 101
+
+      containers:
+
+        - name: web-frontend
+
+          image: ghcr.io/tqnhu4/web-frontend:latest
+
+          imagePullPolicy: Always
+
+          ports:
+            - containerPort: 80
+
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            privileged: false
+
+            capabilities:
+              drop:
+                - ALL
+
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+
+            limits:
+              cpu: 200m
+              memory: 256Mi
+
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+
+            initialDelaySeconds: 10
+            periodSeconds: 20
+
+          volumeMounts:
+            - name: nginx-cache
+              mountPath: /var/cache/nginx
+
+            - name: nginx-run
+              mountPath: /var/run
+
+      volumes:
+        - name: nginx-cache
+          emptyDir: {}
+
+        - name: nginx-run
+          emptyDir: {}
