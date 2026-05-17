@@ -31,5 +31,6 @@ spec:
                 - keys:
                     publicKeys: |-
                       -----BEGIN PUBLIC KEY-----
-                      YOUR_PUBLIC_KEY
+                      MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEnTbTv7eErkUnSMCO2QLhCnYxxgdP
+                      G4y3/idJD7rog83FX71yaFZAgfuthcCpSt2y+tqrBqfq0jm3VknGiSSn+A==
                       -----END PUBLIC KEY-----
