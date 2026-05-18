@@ -19,7 +19,7 @@ spec:
       containers:
         - name: fluent-bit
 
-          image: fluent/fluent-bit:latest
+          image: fluent/fluent-bit:latest1
 
           volumeMounts:
             - name: varlog
