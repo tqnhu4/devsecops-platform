@@ -1,6 +1,7 @@
 resources:
   - ../../apps/web-frontend
-  
 images:
   - name: ghcr.io/tqnhu4/web-frontend
-    newTag: latest    
+    newTag: latest
+image:
+  tag: ceb0d19514ff753d4c103fce4020164e040f0eb8
