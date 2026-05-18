@@ -6,6 +6,6 @@ namespace: web
 resources:
   - ../../apps/web-frontend
   
-#images:
-#  - name: ghcr.io/tqnhu4/web-frontend
-#    newTag: latest    
+images:
+  - name: ghcr.io/tqnhu4/web-frontend
+    newTag: latest    

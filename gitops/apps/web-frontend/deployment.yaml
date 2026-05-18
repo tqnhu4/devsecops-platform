@@ -30,7 +30,7 @@ spec:
 
         - name: web-frontend
 
-          image: ghcr.io/tqnhu4/web-frontend:latest
+          image: ghcr.io/tqnhu4/web-frontend
 
           imagePullPolicy: Always
 
