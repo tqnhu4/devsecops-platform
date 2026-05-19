@@ -10,6 +10,12 @@ spec:
   rules:
     - name: privileged-disabled
 
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+
       validate:
         message: "Privileged containers are forbidden"
 
