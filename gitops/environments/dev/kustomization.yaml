@@ -9,4 +9,4 @@ resources:
 images:
 - name: ghcr.io/tqnhu4/web-frontend
   newName: ghcr.io/tqnhu4/web-frontend
-  newTag: a0817a021365f6dbe28cb64f39c277126bb54266
+  newTag: a4fc8b728e604041f9ba0f047c78010d0939b97b
