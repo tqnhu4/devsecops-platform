@@ -4,8 +4,9 @@ kind: Kustomization
 namespace: web
 
 resources:
-  - ../../apps/web-frontend
+- ../../apps/web-frontend
   
 images:
-  - name: ghcr.io/tqnhu4/web-frontend
-    newTag: latest    
+- name: ghcr.io/tqnhu4/web-frontend
+  newName: ghcr.io/tqnhu4/web-frontend
+  newTag: a0817a021365f6dbe28cb64f39c277126bb54266
