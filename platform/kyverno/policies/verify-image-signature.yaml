@@ -45,14 +45,14 @@ spec:
             secrets:
               - ghcr-secret
 
-          #attestors:
-          #  - entries:
-          #      - keys:
-          #          publicKeys: |-
-          #            -----BEGIN PUBLIC KEY-----
-          #            MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEnTbTv7eErkUnSMCO2QLhCnYxxgdP
-          #            G4y3/idJD7rog83FX71yaFZAgfuthcCpSt2y+tqrBqfq0jm3VknGiSSn+A==
-          #            -----END PUBLIC KEY-----
+          attestors:
+            - entries:
+                - keys:
+                    publicKeys: |-
+                      -----BEGIN PUBLIC KEY-----
+                      MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEnTbTv7eErkUnSMCO2QLhCnYxxgdP
+                      G4y3/idJD7rog83FX71yaFZAgfuthcCpSt2y+tqrBqfq0jm3VknGiSSn+A==
+                      -----END PUBLIC KEY-----
           
           #attestors:
           #  - entries:
