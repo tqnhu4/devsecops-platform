@@ -13,5 +13,6 @@ resources:
   - servicemonitor.yaml
 
 labels:
-  app.kubernetes.io/name: web-frontend
-  app.kubernetes.io/managed-by: argocd
+  - pairs:
+      app.kubernetes.io/name: web-frontend
+      app.kubernetes.io/managed-by: argocd
