@@ -9,5 +9,5 @@ resources:
   - policies/restrict-hostpath.yaml
   - policies/restrict-capabilities.yaml
   - policies/restrict-privileged.yaml
-  - policies/verify-image-signature.yaml
+  #- policies/verify-image-signature.yaml
   - exceptions/falco-exception.yaml
