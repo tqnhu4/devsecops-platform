@@ -10,3 +10,4 @@ resources:
   - policies/restrict-capabilities.yaml
   - policies/restrict-privileged.yaml
   - policies/verify-image-signature.yaml
+  - exceptions/falco-exception.yaml

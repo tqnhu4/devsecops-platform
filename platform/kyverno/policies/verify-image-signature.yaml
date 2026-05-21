@@ -20,17 +20,38 @@ spec:
               kinds:
                 - Pod
 
+      exclude:
+        any:
+          - resources:
+              namespaces:
+                - kyverno
+                - kube-system
+                - argocd
+                - falco
+                - monitoring                
+
       verifyImages:
         - imageReferences:
             - "ghcr.io/tqnhu4/*"
 
           mutateDigest: true
 
-          attestors:
-            - entries:
-                - keys:
-                    publicKeys: |-
-                      -----BEGIN PUBLIC KEY-----
-                      MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEnTbTv7eErkUnSMCO2QLhCnYxxgdP
-                      G4y3/idJD7rog83FX71yaFZAgfuthcCpSt2y+tqrBqfq0jm3VknGiSSn+A==
-                      -----END PUBLIC KEY-----
+          imageRegistryCredentials:
+            secrets:
+              - ghcr-secret
+
+          #attestors:
+          #  - entries:
+          #      - keys:
+          #          publicKeys: |-
+          #            -----BEGIN PUBLIC KEY-----
+          #            MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEnTbTv7eErkUnSMCO2QLhCnYxxgdP
+          #            G4y3/idJD7rog83FX71yaFZAgfuthcCpSt2y+tqrBqfq0jm3VknGiSSn+A==
+          #            -----END PUBLIC KEY-----
+          
+          #attestors:
+          #  - entries:
+          #      - keyless:
+          #          issuer: https://token.actions.githubusercontent.com
+
+          #          subject: "https://github.com/tqnhu4/devsecops-app/.github/workflows/<workflow>.yml@refs/heads/main"          

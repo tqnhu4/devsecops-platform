@@ -3,4 +3,5 @@ resources:
   - monitoring.yaml
   - ingress-nginx.yaml
   - kyverno.yaml
+  - falco.yaml
   - argocd.yaml

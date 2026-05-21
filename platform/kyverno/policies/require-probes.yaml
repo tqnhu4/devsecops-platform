@@ -16,6 +16,16 @@ spec:
               kinds:
                 - Pod
 
+      exclude:
+        any:
+          - resources:
+              namespaces:
+                - kyverno
+                - kube-system
+                - argocd
+                - falco
+                - monitoring                
+
       validate:
         message: "Liveness and readiness probes are required"
 

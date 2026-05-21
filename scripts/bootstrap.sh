@@ -16,6 +16,10 @@ echo "Installing namespaces..."
 kubectl apply -k platform/namespaces
 
 
+echo ""
+echo "[1.1/6] Installing Monitoring Stack..."
+bash scripts/install-monitoring.sh
+
 
 echo ""
 echo "[2/6] Installing ingress-nginx..."
@@ -41,9 +45,6 @@ bash scripts/install-kyverno.sh
 echo "Installing Kyverno..."
 kubectl apply -k platform/kyverno
 
-echo ""
-echo "[5/6] Installing Monitoring Stack..."
-bash scripts/install-monitoring.sh
 
 #--
 kubectl apply -k platform/monitoring
