@@ -22,11 +22,18 @@ jobs:
       - name: Install Kyverno CLI
         uses: kyverno/action-install-cli@v0.2.0
 
+      #- name: Validate Policies
+      #  run: |
+      #    kyverno apply \
+      #      platform/kyverno/policies/*.yaml \
+      #      --resource gitops/apps/web-frontend/deployment.yaml \
+      #      --warn-exit-code 0 \
+      #      --audit-warn \
+      #      -v 6            
       - name: Validate Policies
         run: |
           kyverno apply \
             platform/kyverno/policies/*.yaml \
             --resource gitops/apps/web-frontend/deployment.yaml \
-            --warn-exit-code 0 \
-            --audit-warn \
-            -v 6            
+            --policy-report \
+            --table
