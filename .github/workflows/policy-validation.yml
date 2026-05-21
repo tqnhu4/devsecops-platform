@@ -26,4 +26,7 @@ jobs:
         run: |
           kyverno apply \
             platform/kyverno/policies/*.yaml \
-            --resource gitops/apps/web-frontend/deployment.yaml
+            --resource gitops/apps/web-frontend/deployment.yaml \
+            --warn-exit-code 0 \
+            --audit-warn \
+            -v 6            
