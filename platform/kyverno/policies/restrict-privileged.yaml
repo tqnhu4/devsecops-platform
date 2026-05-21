@@ -36,6 +36,8 @@ spec:
 
         pattern:
           spec:
-            containers:
-              - securityContext:
-                  privileged: false
+            template:
+              spec:          
+                containers:
+                  - securityContext:
+                      privileged: false

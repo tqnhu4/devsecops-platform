@@ -36,11 +36,13 @@ spec:
 
         pattern:
           spec:
-            containers:
-              - livenessProbe:
-                  httpGet:
-                    path: "?*"
+            template:
+              spec:          
+                containers:
+                  - livenessProbe:
+                      httpGet:
+                        path: "?*"
 
-                readinessProbe:
-                  httpGet:
-                    path: "?*"
+                    readinessProbe:
+                      httpGet:
+                        path: "?*"

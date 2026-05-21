@@ -36,8 +36,10 @@ spec:
 
         pattern:
           spec:
-            containers:
-              - securityContext:
-                  capabilities:
-                    drop:
-                      - ALL
+            template:
+              spec:          
+                containers:
+                  - securityContext:
+                      capabilities:
+                        drop:
+                          - ALL

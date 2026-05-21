@@ -36,5 +36,7 @@ spec:
 
         pattern:
           spec:
-            securityContext:
-              runAsNonRoot: true
+            template:
+              spec:          
+                securityContext:
+                  runAsNonRoot: true
