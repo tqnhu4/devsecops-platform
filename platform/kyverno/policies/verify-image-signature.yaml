@@ -18,7 +18,12 @@ spec:
         any:
           - resources:
               kinds:
-                - Pod
+              - Pod
+              - Deployment
+              - StatefulSet
+              - DaemonSet
+              - Job
+              - CronJob
 
       exclude:
         any:
