@@ -60,4 +60,6 @@ spec:
                     issuer: https://token.actions.githubusercontent.com
 
                     #subject: "https://github.com/tqnhu4/devsecops-app/.github/workflows/<workflow>.yml@refs/heads/main"
-                    subject: "https://github.com/tqnhu4/devsecops-app/.github/workflows/*"          
+                    subjectRegExp: "https://github.com/tqnhu4/devsecops-app/.github/workflows/.*"  
+                    rekor:
+                      url: https://rekor.sigstore.dev                            

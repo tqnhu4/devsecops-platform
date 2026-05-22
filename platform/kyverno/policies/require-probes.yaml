@@ -39,10 +39,23 @@ spec:
             template:
               spec:          
                 containers:
+                  #- livenessProbe:
+                  #    httpGet:
+                  #      path: "?*"
+
+                  #  readinessProbe:
+                  #    httpGet:
+                  #      path: "?*"
                   - livenessProbe:
                       httpGet:
-                        path: "?*"
+                        path: /
+                        port: 80
+                      initialDelaySeconds: 10
+                      periodSeconds: 10
 
                     readinessProbe:
                       httpGet:
-                        path: "?*"
+                        path: /
+                        port: 80
+                      initialDelaySeconds: 5
+                      periodSeconds: 5                        
