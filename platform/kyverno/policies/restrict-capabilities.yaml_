@@ -5,7 +5,7 @@ metadata:
   name: restrict-capabilities
 
 spec:
-  validationFailureAction: Enforce
+  validationFailureAction: enforce
 
   rules:
     - name: drop-capabilities
@@ -15,6 +15,11 @@ spec:
           - resources:
               kinds:
                 - Pod
+                - Deployment
+                - StatefulSet
+                - DaemonSet
+                - Job
+                - CronJob
 
       exclude:
         any:
@@ -24,15 +29,19 @@ spec:
                 - kube-system
                 - argocd
                 - falco
-                - monitoring
+                - monitoring                
 
       validate:
         message: "All capabilities must be dropped"
 
         pattern:
           spec:
-            containers:
-              - securityContext:
-                  capabilities:
-                    drop:
-                      - ALL
+            template:
+              spec:          
+                containers:
+                  - securityContext:
+                      runAsNonRoot: true
+                      privileged: false
+                      capabilities:
+                        drop:
+                          - ALL
