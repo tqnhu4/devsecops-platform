@@ -42,9 +42,15 @@ spec:
             readOnlyRootFilesystem: true
             privileged: false
 
+            runAsNonRoot: true
+            runAsUser: 101
+
             capabilities:
               drop:
                 - ALL
+
+            seccompProfile:
+              type: RuntimeDefault                
 
           resources:
             requests:
@@ -78,9 +84,15 @@ spec:
             - name: nginx-run
               mountPath: /var/run
 
+            - mountPath: /tmp
+              name: tmp              
+
       volumes:
         - name: nginx-cache
           emptyDir: {}
 
         - name: nginx-run
           emptyDir: {}
+
+        - emptyDir: {}
+          name: tmp          
