@@ -7,7 +7,8 @@ echo "Creating k3d cluster..."
 k3d cluster create devsecops \
   --agents 2 \
   -p "80:80@loadbalancer" \
-  -p "443:443@loadbalancer"
+  -p "443:443@loadbalancer" \
+  --k3s-arg "--disable=traefik@server:0"
 
 echo ""
 echo "Waiting for cluster nodes..."
