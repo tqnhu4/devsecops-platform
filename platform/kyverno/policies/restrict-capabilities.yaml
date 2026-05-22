@@ -40,6 +40,8 @@ spec:
               spec:          
                 containers:
                   - securityContext:
+                      runAsNonRoot: true
+                      privileged: false
                       capabilities:
                         drop:
                           - ALL
