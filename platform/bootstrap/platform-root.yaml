@@ -11,7 +11,8 @@ spec:
   source:
     repoURL: https://github.com/tqnhu4/devsecops-platform.git
     targetRevision: main
-    path: platform
+    #path: platform
+    path: gitops/argocd
 
   destination:
     server: https://kubernetes.default.svc
