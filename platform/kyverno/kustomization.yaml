@@ -5,7 +5,7 @@ resources:
   - install.yaml
 
   - policies/disallow-latest-tag.yaml
-  #- policies/require-limits.yaml
+  - policies/require-limits.yaml
   #- policies/require-probes.yaml
   - policies/require-security-context.yaml
   #- policies/require-readonly-rootfs.yaml
