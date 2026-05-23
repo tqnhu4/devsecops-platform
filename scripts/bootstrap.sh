@@ -17,12 +17,12 @@ kubectl apply -k platform/namespaces
 
 
 echo ""
-echo "[1.1/6] Installing Monitoring Stack..."
+echo "[2/6] Installing Monitoring Stack..."
 bash scripts/install-monitoring.sh
 
 
 echo ""
-echo "[2/6] Installing ingress-nginx..."
+echo "[3/6] Installing ingress-nginx..."
 bash scripts/install-ingress.sh
 
 #--
@@ -30,7 +30,7 @@ echo "Installing ingress-nginx..."
 kubectl apply -k platform/ingress-nginx
 
 echo ""
-echo "[3/6] Installing ArgoCD..."
+echo "[4/6] Installing ArgoCD..."
 bash scripts/install-argocd.sh
 
 #--
@@ -38,7 +38,7 @@ echo "Installing ArgoCD..."
 kubectl apply -k platform/argocd
 
 echo ""
-echo "[4/6] Installing Kyverno..."
+echo "[5/6] Installing Kyverno..."
 bash scripts/install-kyverno.sh
 
 #--
@@ -60,6 +60,15 @@ kubectl apply -f platform/bootstrap/platform-root.yaml
 #--
 echo "Deploy web-frontend"
 kubectl apply -f gitops/argocd/web-frontend-app.yaml
+
+
+#--
+echo "Deploy Falco"
+kubectl apply -f gitops/argocd/falco-app.yaml
+kubectl apply -f gitops/argocd/ingress-app.yaml
+kubectl apply -f gitops/argocd/kyverno-app.yaml
+kubectl apply -f gitops/argocd/monitoring-app.yaml
+
 
 echo ""
 echo "======================================"

@@ -1,0 +1,5 @@
+resources:
+  - kyverno-app.yaml
+  - monitoring-app.yaml
+  - ingress-app.yaml
+  - falco-app.yaml
