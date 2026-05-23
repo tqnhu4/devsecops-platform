@@ -36,8 +36,6 @@ spec:
 
         pattern:
           spec:
-            template:
-              spec:          
-                containers:
-                  - securityContext:
-                      readOnlyRootFilesystem: true
+            containers:
+              - securityContext:
+                  readOnlyRootFilesystem: true

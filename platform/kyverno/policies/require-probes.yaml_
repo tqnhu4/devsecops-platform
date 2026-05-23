@@ -35,15 +35,13 @@ spec:
         message: "Liveness and readiness probes are required"
 
         pattern:
-          spec:
-            template:
-              spec:          
-                containers:
-                  - livenessProbe:
-                      httpGet:
-                        path: "?*"
+          spec:          
+            containers:
+              - livenessProbe:
+                  httpGet:
+                    path: "?*"
 
-                    readinessProbe:
-                      httpGet:
-                        path: "?*"
+                readinessProbe:
+                  httpGet:
+                    path: "?*"
                      
