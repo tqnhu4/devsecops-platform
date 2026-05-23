@@ -8,7 +8,7 @@ resources:
   - policies/require-limits.yaml
   - policies/require-probes.yaml
   - policies/require-security-context.yaml
-  #- policies/require-readonly-rootfs.yaml
+  - policies/require-readonly-rootfs.yaml
   - policies/restrict-hostpath.yaml
   - policies/restrict-capabilities.yaml
   - policies/restrict-privileged.yaml
