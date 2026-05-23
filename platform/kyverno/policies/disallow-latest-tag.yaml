@@ -36,7 +36,5 @@ spec:
 
         pattern:
           spec:
-            template:
-              spec:
-                containers:
-                  - image: "!*:latest"
+            containers:
+              - image: "!*:latest"

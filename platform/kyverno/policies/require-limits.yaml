@@ -36,10 +36,8 @@ spec:
 
         pattern:
           spec:
-            template:
-              spec:
-                containers:
-                  - resources:
-                      limits:
-                        memory: "?*"
-                        cpu: "?*"
+            containers:
+              - resources:
+                  limits:
+                    memory: "?*"
+                    cpu: "?*"
