@@ -15,11 +15,11 @@ spec:
           - resources:
               kinds:
                 - Pod
-                - Deployment
-                - StatefulSet
-                - DaemonSet
-                - Job
-                - CronJob
+                #- Deployment
+                #- StatefulSet
+                #- DaemonSet
+                #- Job
+                #- CronJob
 
       exclude:
         any:
