@@ -28,15 +28,15 @@ bash scripts/install-kyverno.sh
 
 echo ""
 echo "Applying AppProject..."
-kubectl apply -f gitops/bootstrap/project-root.yaml
+kubectl apply -f platform/bootstrap/project-root.yaml
 
 echo ""
 echo "Bootstrapping Platform Root App..."
-kubectl apply -f gitops/bootstrap/platform-root.yaml
+kubectl apply -f platform/bootstrap/platform-root.yaml
 
 echo ""
 echo "Bootstrapping Application Root App..."
-kubectl apply -f gitops/bootstrap/apps-root.yaml
+kubectl apply -f platform/bootstrap/apps-root.yaml
 
 echo ""
 echo "======================================"
