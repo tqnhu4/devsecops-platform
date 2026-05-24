@@ -7,76 +7,38 @@ echo " Enterprise DevSecOps Bootstrap"
 echo "======================================"
 
 echo ""
-echo "[1/6] Creating Kubernetes Cluster..."
+echo "[1/5] Creating Kubernetes Cluster..."
 bash scripts/install-cluster.sh
 
-
-#--
-echo "Installing namespaces..."
+echo ""
+echo "[2/5] Creating Namespaces..."
 kubectl apply -k platform/namespaces
 
-
 echo ""
-echo "[2/6] Installing Monitoring Stack..."
-bash scripts/install-monitoring.sh
-
-
-echo ""
-echo "[3/6] Installing ingress-nginx..."
+echo "[3/5] Installing ingress-nginx..."
 bash scripts/install-ingress.sh
 
-#--
-echo "Installing ingress-nginx..."
-kubectl apply -k platform/ingress-nginx
-
 echo ""
-echo "[4/6] Installing ArgoCD..."
+echo "[4/5] Installing ArgoCD..."
 bash scripts/install-argocd.sh
 
-#--
-echo "Installing ArgoCD..."
-kubectl apply -k platform/argocd
-
 echo ""
-echo "[5/6] Installing Kyverno..."
+echo "[5/5] Installing Kyverno..."
 bash scripts/install-kyverno.sh
 
-#--
-echo "Installing Kyverno..."
-kubectl apply -k platform/kyverno
-
-
-#--
-kubectl apply -k platform/monitoring
+echo ""
+echo "Applying AppProject..."
+kubectl apply -f gitops/bootstrap/project-root.yaml
 
 echo ""
-echo "[6/6] Installing Falco Runtime Security..."
-bash scripts/install-falco.sh
+echo "Bootstrapping Platform Root App..."
+kubectl apply -f gitops/bootstrap/platform-root.yaml
 
-#--
-echo "Bootstrapping GitOps..."
-kubectl apply -f platform/bootstrap/platform-root.yaml
-
-#--
-echo "Deploy web-frontend"
-kubectl apply -f gitops/argocd/web-frontend-app.yaml
-
-
-#--
-echo "Deploy Falco"
-kubectl apply -f gitops/argocd/falco-app.yaml
-kubectl apply -f gitops/argocd/ingress-app.yaml
-kubectl apply -f gitops/argocd/kyverno-app.yaml
-kubectl apply -f gitops/argocd/monitoring-app.yaml
-
+echo ""
+echo "Bootstrapping Application Root App..."
+kubectl apply -f gitops/bootstrap/apps-root.yaml
 
 echo ""
 echo "======================================"
 echo " Platform Bootstrap Completed"
 echo "======================================"
-
-echo ""
-echo "Useful URLs:"
-echo "- ArgoCD   : https://argocd.local"
-echo "- Grafana  : http://grafana.local"
-echo "- Frontend : http://devsecops.local"
