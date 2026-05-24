@@ -27,6 +27,11 @@ echo "[5/5] Installing Kyverno..."
 bash scripts/install-kyverno.sh
 
 echo ""
+echo "[5/6] Installing Monitoring..."
+bash scripts/install-monitoring.sh
+
+
+echo ""
 echo "Applying AppProject..."
 kubectl apply -f platform/bootstrap/projects-root.yaml
 
