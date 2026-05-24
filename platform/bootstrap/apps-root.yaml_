@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: web-frontend
+  name: apps-root
   namespace: argocd
 
 spec:
@@ -11,16 +11,14 @@ spec:
   source:
     repoURL: https://github.com/tqnhu4/devsecops-platform.git
     targetRevision: main
-    path: gitops/environments/dev
+    path: gitops/apps
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: web
+    #namespace: web
+    namespace: argocd
 
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-
-    syncOptions:
-      - CreateNamespace=true
