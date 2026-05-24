@@ -36,7 +36,10 @@ kubectl apply -f platform/bootstrap/platform-root.yaml
 
 echo ""
 echo "Bootstrapping Application Root App..."
-kubectl apply -f platform/bootstrap/apps-root.yaml
+#kubectl apply -f platform/bootstrap/apps-root.yaml
+echo "Deploy web-frontend"
+kubectl apply -f gitops/argocd/web-frontend-app.yaml
+
 
 echo ""
 echo "======================================"
