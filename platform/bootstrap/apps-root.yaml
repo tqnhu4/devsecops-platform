@@ -6,7 +6,8 @@ metadata:
   namespace: argocd
 
 spec:
-  project: applications
+  #project: applications
+  project: platform
 
   source:
     repoURL: https://github.com/tqnhu4/devsecops-platform.git
