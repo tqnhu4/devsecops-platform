@@ -1,6 +1,40 @@
 grafana:
-  adminPassword: admin
+  enabled: true
+
+  adminPassword: admin123
+
+  service:
+    type: ClusterIP
+
+  sidecar:
+    dashboards:
+      enabled: true
+      label: grafana_dashboard
+
+    datasources:
+      enabled: true
 
 prometheus:
   prometheusSpec:
-    serviceMonitorSelectorNilUsesHelmValues: false
+    retention: 7d
+
+alertmanager:
+  enabled: true
+
+  config:
+    global:
+      resolve_timeout: 5m
+
+    route:
+      receiver: discord
+
+    receivers:
+      - name: discord
+        webhook_configs:
+          - url: https://discord.com/api/webhooks/REPLACE_ME
+
+kube-state-metrics:
+  enabled: true
+
+nodeExporter:
+  enabled: true

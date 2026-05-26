@@ -1,5 +1,6 @@
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
+
 metadata:
   name: pod-restart-alert
   namespace: monitoring
@@ -7,10 +8,12 @@ metadata:
 spec:
   groups:
     - name: pod-alerts
+
       rules:
-        - alert: PodCrashLooping
-          expr: |
-            increase(kube_pod_container_status_restarts_total[10m]) > 3
+        - alert: PodRestarting
+
+          expr: increase(kube_pod_container_status_restarts_total[5m]) > 3
+
           for: 2m
 
           labels:

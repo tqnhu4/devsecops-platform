@@ -7,27 +7,27 @@ echo " Enterprise DevSecOps Bootstrap"
 echo "======================================"
 
 echo ""
-echo "[1/5] Creating Kubernetes Cluster..."
+echo "[1/6] Creating Kubernetes Cluster..."
 bash scripts/install-cluster.sh
 
 echo ""
-echo "[2/5] Creating Namespaces..."
+echo "[2/6] Creating Namespaces..."
 kubectl apply -k platform/namespaces
 
 echo ""
-echo "[3/5] Installing ingress-nginx..."
+echo "[3/6] Installing ingress-nginx..."
 bash scripts/install-ingress.sh
 
 echo ""
-echo "[4/5] Installing ArgoCD..."
+echo "[4/6] Installing ArgoCD..."
 bash scripts/install-argocd.sh
 
 echo ""
-echo "[5/5] Installing Kyverno..."
+echo "[5/6] Installing Kyverno..."
 bash scripts/install-kyverno.sh
 
 echo ""
-echo "[5/6] Installing Monitoring..."
+echo "[6/6] Installing Monitoring..."
 bash scripts/install-monitoring.sh
 
 

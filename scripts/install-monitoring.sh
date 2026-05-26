@@ -4,22 +4,14 @@ set -e
 
 echo "Installing Monitoring Stack..."
 
-helm repo add prometheus-community \
-https://prometheus-community.github.io/helm-charts
+bash platform/monitoring/install.sh
 
-helm repo update
+echo "Installing Loki..."
 
-kubectl create namespace monitoring \
-  --dry-run=client -o yaml | kubectl apply -f -
+bash platform/logging/loki/install.sh
 
-helm upgrade --install monitoring \
-  prometheus-community/kube-prometheus-stack \
-  -n monitoring \
-  -f platform/monitoring/values.yaml
+echo "Installing Fluentbit..."
 
-echo ""
-echo "Monitoring stack installed."
+bash platform/logging/fluentbit/install.sh
 
-echo ""
-echo "Grafana access:"
-echo "kubectl port-forward svc/monitoring-grafana -n monitoring 3000:80"
+echo "Observability stack installed successfully"

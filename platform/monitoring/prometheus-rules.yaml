@@ -1,23 +1,8 @@
-apiVersion: monitoring.coreos.com/v1
-kind: PrometheusRule
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
 
-metadata:
-  name: platform-alerts
-  namespace: monitoring
-
-spec:
-  groups:
-    - name: kubernetes
-
-      rules:
-        - alert: HighCPUUsage
-
-          expr: sum(rate(container_cpu_usage_seconds_total[5m])) > 0.8
-
-          for: 2m
-
-          labels:
-            severity: warning
-
-          annotations:
-            summary: High CPU usage detected
+resources:
+  - alerts/high-cpu-alert.yaml
+  - alerts/pod-restart-alert.yaml
+  - alerts/node-not-ready.yaml
+  - alerts/ingress-high-latency.yaml
