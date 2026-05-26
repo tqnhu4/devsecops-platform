@@ -14,9 +14,10 @@ prometheus-community/kube-prometheus-stack \
 -n monitoring \
 -f platform/monitoring/values.yaml
 
-kubectl apply -f platform/monitoring/grafana-ingress.yaml
+#kubectl apply -f platform/monitoring/grafana-ingress.yaml
 
-kubectl apply -f platform/monitoring/prometheus-rules.yaml
+#kubectl apply -f platform/monitoring/prometheus-rules.yaml
+kubectl apply -k platform/monitoring
 
 kubectl apply -f platform/monitoring/datasources/
 
