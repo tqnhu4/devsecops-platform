@@ -20,6 +20,6 @@ data:
           "title": "Applications"
         }
       ],
-      "title": "ArgoCD",
+      "title": "ArgoCD Dashboard",
       "version": 1
     }
