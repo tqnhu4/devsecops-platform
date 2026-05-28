@@ -10,4 +10,13 @@ metadata:
 
 data:
   argocd.json: |
-    {}
+    {
+      "annotations": {
+        "list": []
+      },
+      "editable": true,
+      "panels": [],
+      "schemaVersion": 38,
+      "title": "ArgoCD Dashboard",
+      "version": 1    
+    }
