@@ -37,3 +37,6 @@ __pycache__/
 # Temporary
 tmp/
 temp/
+
+platform/secrets/sealed-secrets/tmp/
+platform/secrets/sealed-secrets/kubeseal
