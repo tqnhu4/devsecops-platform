@@ -38,5 +38,6 @@ __pycache__/
 tmp/
 temp/
 
+platform/secrets/sealed-secrets/certs/
 platform/secrets/sealed-secrets/tmp/
 platform/secrets/sealed-secrets/kubeseal
