@@ -29,7 +29,8 @@ spec:
                 - kube-system
                 - argocd
                 - falco
-                - monitoring                
+                - monitoring
+                - sealed-secrets                
 
       validate:
         message: "Privileged containers are forbidden"
