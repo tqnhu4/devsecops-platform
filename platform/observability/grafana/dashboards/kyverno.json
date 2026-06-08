@@ -1,0 +1,8 @@
+{
+  "title":"Policy Violations",
+  "targets":[
+    {
+      "expr":"sum(kyverno_policy_results_total)"
+    }
+  ]
+}

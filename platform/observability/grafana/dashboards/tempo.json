@@ -1,0 +1,8 @@
+{
+  "title":"Trace Rate",
+  "targets":[
+    {
+      "expr":"sum(rate(traces_spanmetrics_calls_total[5m]))"
+    }
+  ]
+}

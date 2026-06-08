@@ -1,7 +1,0 @@
-resources:
-  - namespace.yaml
-  - grafana-ingress.yaml
-  - prometheus-rules.yaml
-
-  - alerts/pod-restart-alert.yaml
-  - alerts/high-cpu-alert.yaml

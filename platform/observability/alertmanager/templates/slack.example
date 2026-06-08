@@ -1,0 +1,33 @@
+[FIRING]
+
+[CRITICAL]
+
+HighCPUUsage
+
+Alert:
+HighCPUUsage
+
+Status:
+firing
+
+Severity:
+critical
+
+Namespace:
+web
+
+Pod:
+web-frontend
+
+Instance:
+10.0.1.23
+
+Summary:
+High CPU Usage
+
+Description:
+CPU usage above 80%
+
+Starts At:
+
+2026-06-07T12:30Z

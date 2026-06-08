@@ -1,0 +1,27 @@
+tempo:
+
+  metricsGenerator:
+
+    enabled: true
+
+persistence:
+
+  enabled: true
+
+  size: 20Gi
+
+serviceMonitor:
+
+  enabled: true
+
+traces:
+
+  otlp:
+
+    grpc:
+
+      enabled: true
+
+    http:
+
+      enabled: true
