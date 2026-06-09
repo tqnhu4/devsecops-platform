@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - kyverno-app.yaml
-  - monitoring-app.yaml
+  #- monitoring-app.yaml
+  - observability-app.yaml
   - ingress-app.yaml
   - falco-app.yaml

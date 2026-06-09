@@ -1,0 +1,163 @@
+crds:
+  enabled: true
+
+fullnameOverride: monitoring
+
+############################################
+# Prometheus Operator
+############################################
+
+prometheusOperator:
+  enabled: true
+
+############################################
+# Prometheus
+############################################
+
+prometheus:
+
+  enabled: true
+
+  service:
+    type: ClusterIP
+
+  prometheusSpec:
+
+    replicas: 1
+
+    retention: 15d
+
+    retentionSize: 10GB
+
+    scrapeInterval: 30s
+
+    evaluationInterval: 30s
+
+    serviceMonitorSelectorNilUsesHelmValues: false
+
+    podMonitorSelectorNilUsesHelmValues: false
+
+    ruleSelectorNilUsesHelmValues: false
+
+    storageSpec:
+
+      volumeClaimTemplate:
+
+        spec:
+
+          accessModes:
+            - ReadWriteOnce
+
+          resources:
+
+            requests:
+
+              storage: 20Gi
+
+############################################
+# Alertmanager
+############################################
+
+alertmanager:
+
+  enabled: true
+
+  alertmanagerSpec:
+
+    replicas: 1
+
+    storage:
+
+      volumeClaimTemplate:
+
+        spec:
+
+          accessModes:
+            - ReadWriteOnce
+
+          resources:
+
+            requests:
+
+              storage: 5Gi
+
+############################################
+# Grafana
+############################################
+
+grafana:
+
+  enabled: true
+
+  adminUser: admin
+
+  adminPassword: admin123
+
+  defaultDashboardsTimezone: browser
+
+  persistence:
+
+    enabled: true
+
+    size: 10Gi
+
+  service:
+
+    type: ClusterIP
+
+############################################
+# kube-state-metrics
+############################################
+
+kubeStateMetrics:
+
+  enabled: true
+
+############################################
+# node-exporter
+############################################
+
+nodeExporter:
+
+  enabled: true
+
+############################################
+# Default Rules
+############################################
+
+defaultRules:
+
+  create: true
+
+############################################
+# Kubernetes Components
+############################################
+
+kubeApiServer:
+  enabled: true
+
+kubeControllerManager:
+  enabled: true
+
+kubeScheduler:
+  enabled: true
+
+kubeEtcd:
+  enabled: true
+
+kubeProxy:
+  enabled: true
+
+############################################
+# CoreDNS
+############################################
+
+coreDns:
+  enabled: true
+
+############################################
+# Kubelet
+############################################
+
+kubelet:
+  enabled: true
