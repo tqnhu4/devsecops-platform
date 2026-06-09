@@ -39,6 +39,9 @@ echo ""
 echo "Bootstrapping Platform Root App..."
 kubectl apply -f platform/bootstrap/platform-root.yaml
 
+echo "Waiting Platform..."
+argocd app wait platform-root --health --sync
+
 echo ""
 echo "Bootstrapping Application Root App..."
 kubectl apply -f platform/bootstrap/apps-root.yaml
