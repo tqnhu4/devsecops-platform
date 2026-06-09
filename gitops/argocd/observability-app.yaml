@@ -11,7 +11,8 @@ spec:
   source:
     repoURL: https://github.com/tqnhu4/devsecops-platform.git
     targetRevision: main
-    path: platform/observability/kube-prometheus-stack
+    #path: platform/observability/kube-prometheus-stack
+    path: platform/observability
 
   destination:
     server: https://kubernetes.default.svc
