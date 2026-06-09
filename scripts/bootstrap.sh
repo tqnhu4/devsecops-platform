@@ -31,6 +31,7 @@ bash scripts/install-kyverno.sh
 #bash scripts/install-monitoring.sh
 
 
+
 echo ""
 echo "Applying AppProject..."
 kubectl apply -f platform/bootstrap/projects-root.yaml
@@ -39,8 +40,8 @@ echo ""
 echo "Bootstrapping Platform Root App..."
 kubectl apply -f platform/bootstrap/platform-root.yaml
 
-echo "Waiting Platform..."
-argocd app wait platform-root --health --sync
+#echo "Waiting Platform..."
+#argocd app wait platform-root --health --sync
 
 echo ""
 echo "Bootstrapping Application Root App..."
