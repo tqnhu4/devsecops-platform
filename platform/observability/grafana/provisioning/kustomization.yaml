@@ -4,5 +4,5 @@ kind: Kustomization
 
 resources:
 
-- dashboards.yaml
-- datasources.yaml
+- dashboards-configmap.yaml
+- datasource-configmap.yaml
