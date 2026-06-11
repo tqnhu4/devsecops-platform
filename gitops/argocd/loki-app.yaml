@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: loki
+
+spec:
+
+  source:
+
+    repoURL: https://grafana.github.io/helm-charts
+
+    chart: loki
+
+    targetRevision: 6.x
+
+    helm:
+
+      valueFiles:
+
+      - $values/platform/observability/logs/loki/values.yaml
+
+  destination:
+
+    namespace: monitoring
+
+    server: https://kubernetes.default.svc
