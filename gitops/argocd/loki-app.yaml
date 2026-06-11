@@ -3,25 +3,59 @@ kind: Application
 
 metadata:
   name: loki
+  namespace: argocd
+
+  annotations:
+    argocd.argoproj.io/sync-wave: "40"
 
 spec:
 
-  source:
+  project: platform
 
-    repoURL: https://grafana.github.io/helm-charts
+  sources:
 
-    chart: loki
+    #
+    # Loki Helm Chart
+    #
 
-    targetRevision: 6.x
+    - repoURL: https://grafana.github.io/helm-charts
 
-    helm:
+      chart: loki
 
-      valueFiles:
+      targetRevision: 6.43.0
 
-      - $values/platform/observability/logs/loki/values.yaml
+      helm:
+
+        valueFiles:
+
+          - $values/platform/observability/logs/loki/values.yaml
+
+    #
+    # Git Repository
+    #
+
+    - repoURL: https://github.com/tqnhu4/devsecops-platform.git
+
+      targetRevision: HEAD
+
+      ref: values
 
   destination:
 
+    server: https://kubernetes.default.svc
+
     namespace: monitoring
 
-    server: https://kubernetes.default.svc
+  syncPolicy:
+
+    automated:
+
+      prune: true
+
+      selfHeal: true
+
+    syncOptions:
+
+      - CreateNamespace=true
+
+      - ServerSideApply=true
