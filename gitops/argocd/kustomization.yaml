@@ -5,7 +5,8 @@ resources:
   - kyverno-app.yaml
   #- monitoring-app.yaml
   - kube-prometheus-stack-app.yaml
-  - loki-app.yaml
+  
   - observability-app.yaml
+  - loki-app.yaml
   - ingress-app.yaml
   - falco-app.yaml
