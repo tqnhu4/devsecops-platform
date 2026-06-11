@@ -134,19 +134,24 @@ defaultRules:
 ############################################
 
 kubeApiServer:
-  enabled: true
+  #enabled: true
+  enabled: false
 
 kubeControllerManager:
-  enabled: true
+  #enabled: true
+  enabled: false
 
 kubeScheduler:
-  enabled: true
+  #enabled: true
+  enabled: false
 
 kubeEtcd:
-  enabled: true
+  #enabled: true
+  enabled: false
 
 kubeProxy:
-  enabled: true
+  #enabled: true
+  enabled: false
 
 ############################################
 # CoreDNS
