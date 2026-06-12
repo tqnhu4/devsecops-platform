@@ -15,6 +15,12 @@ echo ""
 kubectl port-forward svc/argocd-server -n argocd 8081:443 &
 
 kubectl port-forward svc/monitoring-grafana -n monitoring 3000:80 &
+->
+kubectl port-forward svc/kube-prometheus-stack-grafana -n monitoring 3000:80 &
+
 
 kubectl port-forward svc/monitoring-kube-prometheus-prometheus -n monitoring 9090:9090 &
+->
+kubectl port-forward svc/kube-prometheus-stack-grafana -n monitoring 9090:9090 &
+
 
