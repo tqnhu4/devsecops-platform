@@ -38,6 +38,8 @@ prometheus:
     podMonitorSelectorNilUsesHelmValues: false
 
     ruleSelectorNilUsesHelmValues: false
+    
+    enableRemoteWriteReceiver: true
 
     storageSpec:
 
