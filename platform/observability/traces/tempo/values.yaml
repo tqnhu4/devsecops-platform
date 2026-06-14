@@ -4,7 +4,13 @@ tempo:
 
     enabled: true
 
-    remoteWriteUrl: http://monitoring-prometheus:9090/api/v1/write
+    storage:
+
+      path: /var/tempo/generator
+
+    remoteWrite:
+
+      - url: http://monitoring-prometheus:9090/api/v1/write
 
   overrides:
 
