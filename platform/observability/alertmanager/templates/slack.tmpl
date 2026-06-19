@@ -1,55 +1,21 @@
 {{ define "slack.title" }}
 
-[{{ .Status | toUpper }}]
-
-{{ if .CommonLabels.severity }}
-
-[{{ .CommonLabels.severity | toUpper }}]
-
-{{ end }}
-
 {{ .CommonLabels.alertname }}
 
 {{ end }}
 
-{{ define "slack.text" }}
+{{ define "slack.body" }}
 
-*Alert:* {{ .CommonLabels.alertname }}
+Severity:
 
-*Status:* {{ .Status }}
+{{ .CommonLabels.severity }}
 
-*Severity:* {{ .CommonLabels.severity }}
+Namespace:
 
-*Namespace:* {{ .CommonLabels.namespace }}
+{{ .CommonLabels.namespace }}
 
-*Pod:* {{ .CommonLabels.pod }}
-
-*Instance:* {{ .CommonLabels.instance }}
-
-{{ if .CommonAnnotations.summary }}
-
-*Summary:*
-
-{{ .CommonAnnotations.summary }}
-
-{{ end }}
-
-{{ if .CommonAnnotations.description }}
-
-*Description:*
+Description:
 
 {{ .CommonAnnotations.description }}
-
-{{ end }}
-
-*Starts At:*
-
-{{ .Alerts.Firing | len }} alert(s)
-
-{{ range .Alerts }}
-
-• {{ .StartsAt }}
-
-{{ end }}
 
 {{ end }}

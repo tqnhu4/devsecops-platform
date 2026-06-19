@@ -15,119 +15,31 @@ stringData:
 
     global:
 
-      resolve_timeout: 5m
-
     templates:
 
-      - "/etc/alertmanager/templates/*.tmpl"
+    - '/etc/alertmanager/templates/*.tmpl'    
 
     route:
 
-      receiver: default
-
-      group_by:
-
-        - alertname
-        - namespace
-
-      group_wait: 30s
-
-      group_interval: 5m
-
-      repeat_interval: 12h
-
-      routes:
-
-      - matchers:
-
-        - severity="warning"
-
-        receiver: slack-warning
-
-      - matchers:
-
-        - severity="critical"
-
-        receiver: slack-critical
-
-      - matchers:
-
-        - severity="info"
-
-        receiver: slack-info
+      receiver: slack
 
     receivers:
 
-    - name: default
-
-    - name: slack-warning
+    - name: slack
 
       slack_configs:
 
-      - api_url_file: /etc/alertmanager/secrets/slack/api_url
+      #- api_url_file: /etc/alertmanager/secrets/api_url
+      - api_url_file: /etc/alertmanager/secrets/alertmanager-slack/api_url
 
-        channel: "#warning"
-
-        send_resolved: true
-
-        title: "{{ template \"slack.title\" . }}"
-
-        text: "{{ template \"slack.text\" . }}"
-
-    - name: slack-critical
-
-      slack_configs:
-
-      - api_url_file: /etc/alertmanager/secrets/slack/api_url
-
-        channel: "#critical"
+        channel: "#alerts"
 
         send_resolved: true
 
-        title: "{{ template \"slack.title\" . }}"
+        #title: "{{ .CommonLabels.alertname }}"
 
-        text: "{{ template \"slack.text\" . }}"
+        #text: "{{ .CommonAnnotations.description }}"
 
-    - name: slack-info
+        title: '{{ template "slack.title" . }}'
 
-      slack_configs:
-
-      - api_url_file: /etc/alertmanager/secrets/slack/api_url
-
-        channel: "#info"
-
-        send_resolved: true
-
-        title: "{{ template \"slack.title\" . }}"
-
-        text: "{{ template \"slack.text\" . }}"
-
-    inhibit_rules:
-
-    - source_matchers:
-
-      - severity="critical"
-
-      target_matchers:
-
-      - severity="warning"
-
-      equal:
-
-      - alertname
-
-      - namespace
-
-    - source_matchers:
-
-      - severity="warning"
-
-      target_matchers:
-
-      - severity="info"
-
-      equal:
-
-      - alertname
-
-      - namespace
+        text: '{{ template "slack.body" . }}'
