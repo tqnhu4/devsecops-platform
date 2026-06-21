@@ -1,8 +1,0 @@
-{
-  "title":"HTTP Requests",
-  "targets":[
-    {
-      "expr":"sum(rate(http_requests_total[5m]))"
-    }
-  ]
-}

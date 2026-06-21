@@ -1,6 +1,0 @@
-resources:
-  - install.yaml
-  - ingress.yaml
-  - project-platform.yaml
-  - project-apps.yaml
-  - repository-secret.yaml

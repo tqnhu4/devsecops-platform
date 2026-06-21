@@ -1,8 +1,0 @@
-{
-  "title":"Logs/sec",
-  "targets":[
-    {
-      "expr":"sum(rate({job=\"varlogs\"}[5m]))"
-    }
-  ]
-}

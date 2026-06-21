@@ -1,5 +1,0 @@
-falco:
-  jsonOutput: true
-
-driver:
-  kind: modern_ebpf

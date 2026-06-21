@@ -1,7 +1,0 @@
-resources:
-  - web.yaml
-  - monitoring.yaml
-  - ingress-nginx.yaml
-  - kyverno.yaml
-  - falco.yaml
-  - argocd.yaml

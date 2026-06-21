@@ -1,8 +1,0 @@
-{
-  "title":"Falco Alerts",
-  "targets":[
-    {
-      "expr":"sum(rate(falco_events_total[5m]))"
-    }
-  ]
-}

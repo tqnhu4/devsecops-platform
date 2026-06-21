@@ -1,9 +1,0 @@
-{
-  "title": "Pods",
-  "type": "stat",
-  "targets": [
-    {
-      "expr": "count(kube_pod_info)"
-    }
-  ]
-}

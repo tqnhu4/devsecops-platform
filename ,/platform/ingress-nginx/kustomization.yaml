@@ -1,5 +1,0 @@
-resources:
-  - install.yaml
-  - ingress-class.yaml
-  - configmap.yaml
-  - service-monitor.yaml
