@@ -1,0 +1,26 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: ingress-high-latency
+  namespace: monitoring
+
+spec:
+  groups:
+    - name: ingress-alerts
+      rules:
+        - alert: IngressHighLatency
+          expr: |
+            histogram_quantile(
+              0.95,
+              rate(
+                nginx_ingress_controller_request_duration_seconds_bucket[5m]
+              )
+            ) > 1
+
+          for: 5m
+
+          labels:
+            severity: warning
+
+          annotations:
+            summary: High ingress latency detected

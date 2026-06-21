@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -e
+
+echo "Generating SLSA provenance..."
+
+cat <<EOF > provenance.json
+{
+  "_type": "https://in-toto.io/Statement/v0.1",
+  "predicateType": "https://slsa.dev/provenance/v0.2"
+}
+EOF
+
+echo "Done."

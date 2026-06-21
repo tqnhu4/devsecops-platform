@@ -1,0 +1,41 @@
+grafana:
+
+  enabled: true
+
+  replicas: 1
+
+  adminPassword: admin
+
+  persistence:
+
+    enabled: true
+
+    size: 10Gi
+
+  resources:
+
+    requests:
+
+      cpu: 200m
+
+      memory: 512Mi
+
+    limits:
+
+      cpu: 500m
+
+      memory: 1Gi
+
+  serviceMonitor:
+
+    enabled: true
+
+  sidecar:
+
+    dashboards:
+
+      enabled: true
+
+    datasources:
+
+      enabled: true

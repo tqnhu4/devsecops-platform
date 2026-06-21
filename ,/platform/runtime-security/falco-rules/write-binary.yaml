@@ -1,0 +1,13 @@
+- rule: Write Below Binary Dir
+
+  desc: Detect write below /bin
+
+  condition: >
+    open_write and
+    fd.name startswith /bin
+
+  output: >
+    File written below /bin
+    (user=%user.name command=%proc.cmdline file=%fd.name)
+
+  priority: ERROR

@@ -1,0 +1,30 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+
+metadata:
+  name: namespace-recording-rules
+  namespace: monitoring
+
+spec:
+
+  groups:
+
+  - name: namespace
+
+    rules:
+
+    - record: namespace:pod_count
+
+      expr: |
+        count by(namespace)
+        (
+        kube_pod_info
+        )
+
+    - record: namespace:container_count
+
+      expr: |
+        count by(namespace)
+        (
+        kube_pod_container_info
+        )

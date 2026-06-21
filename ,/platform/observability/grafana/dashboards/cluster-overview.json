@@ -1,0 +1,13 @@
+{
+  "title": "Cluster CPU Usage",
+  "type": "stat",
+  "datasource": {
+    "type": "prometheus",
+    "uid": "Prometheus"
+  },
+  "targets": [
+    {
+      "expr": "100-(avg(rate(node_cpu_seconds_total{mode=\"idle\"}[5m]))*100)"
+    }
+  ]
+}

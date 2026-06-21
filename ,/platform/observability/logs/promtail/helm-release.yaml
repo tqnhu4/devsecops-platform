@@ -1,0 +1,15 @@
+apiVersion: helm.cattle.io/v1
+
+kind: HelmChart
+
+metadata:
+
+  name: promtail
+
+  namespace: monitoring
+
+spec:
+
+  chart: promtail
+
+  repo: https://grafana.github.io/helm-charts

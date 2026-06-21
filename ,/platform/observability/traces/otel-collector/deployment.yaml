@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+
+  name: otel-collector
+
+  namespace: monitoring
+
+spec:
+
+  replicas: 1
+
+  selector:
+
+    matchLabels:
+
+      app: otel-collector
+
+  template:
+
+    metadata:
+
+      labels:
+
+        app: otel-collector
+
+    spec:
+
+      containers:
+
+      - name: otel
+
+        image: otel/opentelemetry-collector:latest
+
+        args:
+
+        - --config=/conf/collector.yaml
+
+        volumeMounts:
+
+        - name: config
+
+          mountPath: /conf
+
+      volumes:
+
+      - name: config
+
+        configMap:
+
+          name: otel-collector-config

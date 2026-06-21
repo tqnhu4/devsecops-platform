@@ -1,0 +1,15 @@
+apiVersion: helm.cattle.io/v1
+
+kind: HelmChart
+
+metadata:
+
+  name: tempo
+
+  namespace: monitoring
+
+spec:
+
+  chart: tempo
+
+  repo: https://grafana.github.io/helm-charts

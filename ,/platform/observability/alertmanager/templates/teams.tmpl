@@ -1,0 +1,29 @@
+{{ define "teams.title" }}
+
+{{ .CommonLabels.alertname }}
+
+{{ end }}
+
+{{ define "teams.text" }}
+
+Status: {{ .Status }}
+
+Severity: {{ .CommonLabels.severity }}
+
+Alert: {{ .CommonLabels.alertname }}
+
+Namespace: {{ .CommonLabels.namespace }}
+
+Pod: {{ .CommonLabels.pod }}
+
+Instance: {{ .CommonLabels.instance }}
+
+Summary:
+
+{{ .CommonAnnotations.summary }}
+
+Description:
+
+{{ .CommonAnnotations.description }}
+
+{{ end }}

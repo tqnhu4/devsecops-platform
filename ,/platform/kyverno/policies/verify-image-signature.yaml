@@ -1,0 +1,65 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+
+metadata:
+  name: verify-image-signature
+
+spec:
+  validationFailureAction: enforce
+
+  background: false
+
+  webhookTimeoutSeconds: 30
+
+  rules:
+    - name: verify-signature
+
+      match:
+        any:
+          - resources:
+              kinds:
+              - Pod
+              - Deployment
+              - StatefulSet
+              - DaemonSet
+              - Job
+              - CronJob
+
+      exclude:
+        any:
+          - resources:
+              namespaces:
+                - kyverno
+                - kube-system
+                - argocd
+                - falco
+                - monitoring                
+
+      verifyImages:
+        - imageReferences:
+            - "ghcr.io/tqnhu4/*"
+
+          mutateDigest: true
+
+          imageRegistryCredentials:
+            secrets:
+              - ghcr-secret
+
+          #attestors:
+          #  - entries:
+          #      - keys:
+          #          publicKeys: |-
+          #            -----BEGIN PUBLIC KEY-----
+          #            MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEnTbTv7eErkUnSMCO2QLhCnYxxgdP
+          #            G4y3/idJD7rog83FX71yaFZAgfuthcCpSt2y+tqrBqfq0jm3VknGiSSn+A==
+          #            -----END PUBLIC KEY-----
+          
+          attestors:
+            - entries:
+                - keyless:
+                    issuer: https://token.actions.githubusercontent.com
+
+                    #subject: "https://github.com/tqnhu4/devsecops-app/.github/workflows/<workflow>.yml@refs/heads/main"
+                    subjectRegExp: "https://github.com/tqnhu4/devsecops-app/.github/workflows/.*"  
+                    rekor:
+                      url: https://rekor.sigstore.dev                            

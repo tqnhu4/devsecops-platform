@@ -1,0 +1,39 @@
+name: Policy Validation
+
+on:
+
+  push:
+    branches:
+      - main
+
+  pull_request:
+
+jobs:
+
+  kyverno-policy-validation:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Kyverno CLI
+        uses: kyverno/action-install-cli@v0.2.0
+
+      - name: Validate Policies
+        run: |
+          kyverno apply \
+            platform/kyverno/policies/*.yaml \
+            --resource gitops/apps/web-frontend/deployment.yaml \
+            --warn-exit-code 0 \
+            --audit-warn \
+            -v 6            
+      #- name: Validate Policies
+      #  run: |
+      #    kyverno apply \
+      #      platform/kyverno/policies/*.yaml \
+      #      --resource gitops/apps/web-frontend/deployment.yaml \
+      #      --policy-report \
+      #      --table

@@ -1,0 +1,41 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+
+metadata:
+  name: require-security-context
+
+spec:
+  validationFailureAction: enforce
+
+  rules:
+    - name: security-context
+
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+                #- Deployment
+                #- StatefulSet
+                #- DaemonSet
+                #- Job
+                #- CronJob
+
+      exclude:
+        any:
+          - resources:
+              namespaces:
+                - kyverno
+                - kube-system
+                - argocd
+                - falco
+                - monitoring                
+
+      validate:
+        message: "SecurityContext required"
+
+        pattern:
+          spec:
+            containers:
+              - securityContext:
+                  runAsNonRoot: true

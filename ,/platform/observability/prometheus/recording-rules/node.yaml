@@ -1,0 +1,39 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+
+metadata:
+  name: node-recording-rules
+  namespace: monitoring
+
+spec:
+
+  groups:
+
+  - name: node
+
+    rules:
+
+    - record: node:cpu_usage
+
+      expr: |
+        100-
+        (
+        avg by(instance)
+        (
+        rate(
+        node_cpu_seconds_total{mode="idle"}[5m]
+        )
+        )*100
+        )
+
+    - record: node:memory_usage
+
+      expr: |
+        (
+        1-
+        (
+        node_memory_MemAvailable_bytes
+        /
+        node_memory_MemTotal_bytes
+        )
+        )*100

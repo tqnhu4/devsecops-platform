@@ -1,0 +1,42 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+
+metadata:
+  name: restrict-privileged
+
+spec:
+  validationFailureAction: enforce
+
+  rules:
+    - name: privileged-disabled
+
+      match:
+        any:
+          - resources:
+              kinds:
+                - Pod
+                #- Deployment
+                #- StatefulSet
+                #- DaemonSet
+                #- Job
+                #- CronJob
+
+      exclude:
+        any:
+          - resources:
+              namespaces:
+                - kyverno
+                - kube-system
+                - argocd
+                - falco
+                - monitoring
+                - sealed-secrets                
+
+      validate:
+        message: "Privileged containers are forbidden"
+
+        pattern:
+          spec:
+            containers:
+              - securityContext:
+                  privileged: false

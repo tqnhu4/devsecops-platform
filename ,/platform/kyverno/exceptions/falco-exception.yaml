@@ -1,0 +1,44 @@
+apiVersion: kyverno.io/v2
+kind: PolicyException
+
+metadata:
+  name: falco-exception
+  namespace: falco
+
+spec:
+  exceptions:
+    - policyName: restrict-hostpath
+      ruleNames:
+        - autogen-deny-hostpath
+
+    - policyName: restrict-privileged
+      ruleNames:
+        - autogen-privileged-disabled
+
+    - policyName: restrict-capabilities
+      ruleNames:
+        - autogen-drop-capabilities
+
+    - policyName: require-security-context
+      ruleNames:
+        - autogen-security-context
+
+    - policyName: require-readonly-rootfs
+      ruleNames:
+        - autogen-readonly-rootfs
+
+    - policyName: require-probes
+      ruleNames:
+        - autogen-probes-required
+
+    - policyName: require-limits
+      ruleNames:
+        - autogen-check-limits
+
+  match:
+    any:
+      - resources:
+          kinds:
+            - DaemonSet
+          names:
+            - falco
