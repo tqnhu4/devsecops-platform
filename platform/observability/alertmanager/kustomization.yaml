@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
 
 - config
-- templates
-#- secrets
+#- templates
+- secrets
 #- secrets/sealed
 #- ingress.yaml
