@@ -87,25 +87,25 @@ alertmanager:
 # Grafana
 ############################################
 
-grafana:
+#grafana:
 
-  enabled: true
+#  enabled: true
 
-  adminUser: admin
+#  adminUser: admin
 
-  adminPassword: admin123
+#  adminPassword: admin123
 
-  defaultDashboardsTimezone: browser
+#  defaultDashboardsTimezone: browser
 
-  persistence:
+#  persistence:
 
-    enabled: true
+#    enabled: true
 
-    size: 10Gi
+#    size: 10Gi
 
-  service:
+#  service:
 
-    type: ClusterIP
+#    type: ClusterIP
 
 ############################################
 # kube-state-metrics
