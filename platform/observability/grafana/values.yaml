@@ -39,3 +39,12 @@ grafana:
     datasources:
 
       enabled: false
+
+  additionalDataSources:
+    - name: Loki
+      type: loki
+      url: http://loki:3100
+
+    - name: Tempo
+      type: tempo
+      url: http://tempo:3200        
