@@ -9,10 +9,10 @@ resources:
 
 - prometheus
 
-- alertmanager
-
 - grafana
 
 - logs
 
 - traces
+
+- alertmanager
