@@ -4,16 +4,10 @@ kind: Kustomization
 
 resources:
 - namespace.yaml
-
-
-
-- prometheus
-
-- grafana
-
-- logs
-
-- traces
-
 - kube-prometheus-stack
 - alertmanager
+- prometheus
+- grafana
+- logs
+- traces
+
