@@ -5,7 +5,7 @@ kind: Kustomization
 resources:
 - namespace.yaml
 
-- kube-prometheus-stack
+
 
 - prometheus
 
@@ -15,4 +15,5 @@ resources:
 
 - traces
 
+- kube-prometheus-stack
 - alertmanager
