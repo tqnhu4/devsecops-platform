@@ -3,7 +3,7 @@ kind: Kustomization
 
 resources:
 - config
-
+- templates1
 #- templates
 #- secrets
 #- secrets/sealed
