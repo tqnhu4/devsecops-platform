@@ -26,6 +26,10 @@ echo ""
 echo "[5/6] Installing Kyverno..."
 bash scripts/install-kyverno.sh
 
+echo ""
+echo "[6/6] Installing Sealed Secrets..."
+bash scripts/install-sealed-secrets.sh
+
 #echo ""
 #echo "[6/6] Installing Monitoring..."
 #bash scripts/install-monitoring.sh
