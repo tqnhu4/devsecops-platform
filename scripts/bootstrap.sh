@@ -19,15 +19,7 @@ echo "[3/6] Installing ingress-nginx..."
 bash scripts/install-ingress.sh
 
 echo ""
-echo "[4/6] Installing ArgoCD..."
-bash scripts/install-argocd.sh
-
-echo ""
-echo "[5/6] Installing Kyverno..."
-bash scripts/install-kyverno.sh
-
-echo ""
-echo "[6/6] Installing Sealed Secrets..."
+echo "[4/6] Installing Sealed Secrets..."
 bash scripts/install-sealed-secrets.sh
 
 
@@ -39,6 +31,16 @@ kubectl apply \
 echo "Restart Controller"
 kubectl rollout restart deployment sealed-secrets \
 -n kube-system
+
+echo ""
+echo "[5/6] Installing ArgoCD..."
+bash scripts/install-argocd.sh
+
+echo ""
+echo "[6/6] Installing Kyverno..."
+bash scripts/install-kyverno.sh
+
+
 
 #echo ""
 #echo "[6/6] Installing Monitoring..."

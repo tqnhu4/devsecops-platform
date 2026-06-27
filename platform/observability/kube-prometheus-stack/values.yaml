@@ -65,6 +65,8 @@ alertmanager:
   enabled: true
 
   alertmanagerSpec:
+    secrets:
+      - alertmanager-slack  
 
     replicas: 1
 
