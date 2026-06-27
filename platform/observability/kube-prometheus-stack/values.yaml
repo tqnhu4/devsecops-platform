@@ -61,45 +61,21 @@ prometheus:
 ############################################
 
 alertmanager:
-
   enabled: true
 
-  config:
-    global:
-      resolve_timeout: 5m
-
-    route:
-      receiver: slack
-
-    receivers:
-      - name: slack
-        slack_configs:
-          - api_url_file: /etc/alertmanager/secrets/alertmanager-slack/api_url
-            channel: "#alerts"
-            send_resolved: true
-
-    templates:
-      - /etc/alertmanager/templates/*.tmpl  
-
   alertmanagerSpec:
-    secrets:
-      - alertmanager-slack  
-
     replicas: 1
 
+    secrets:
+      - alertmanager-slack
+
     storage:
-
       volumeClaimTemplate:
-
         spec:
-
           accessModes:
             - ReadWriteOnce
-
           resources:
-
             requests:
-
               storage: 5Gi
 
 ############################################
