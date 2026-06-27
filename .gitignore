@@ -43,3 +43,4 @@ platform/secrets/sealed-secrets/tmp/
 platform/secrets/sealed-secrets/kubeseal
 
 platform/observability/alertmanager/secrets/slack-secret.yaml
+backup/

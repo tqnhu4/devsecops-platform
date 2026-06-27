@@ -30,6 +30,16 @@ echo ""
 echo "[6/6] Installing Sealed Secrets..."
 bash scripts/install-sealed-secrets.sh
 
+
+echo "Restore Private Key"
+kubectl apply \
+-f backup/sealed-secrets-key.yaml
+
+
+echo "Restart Controller"
+kubectl rollout restart deployment sealed-secrets \
+-n kube-system
+
 #echo ""
 #echo "[6/6] Installing Monitoring..."
 #bash scripts/install-monitoring.sh
