@@ -1,0 +1,21 @@
+{{ define "slack.title" }}
+
+{{ .CommonLabels.alertname }}
+
+{{ end }}
+
+{{ define "slack.body" }}
+
+Severity:
+
+{{ .CommonLabels.severity }}
+
+Namespace:
+
+{{ .CommonLabels.namespace }}
+
+Description:
+
+{{ .CommonAnnotations.description }}
+
+{{ end }}

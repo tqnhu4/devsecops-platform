@@ -1,21 +1,27 @@
 {{ define "slack.title" }}
-
-{{ .CommonLabels.alertname }}
-
+[{{ .Status | upper }}] {{ len .Alerts }} alert(s)
 {{ end }}
 
 {{ define "slack.body" }}
 
-Severity:
+{{ range .Alerts }}
 
-{{ .CommonLabels.severity }}
+:red_circle: *{{ .Labels.alertname }}*
 
-Namespace:
+• Severity: `{{ .Labels.severity }}`
 
-{{ .CommonLabels.namespace }}
+• Namespace: `{{ .Labels.namespace }}`
 
-Description:
+• Pod: `{{ .Labels.pod }}`
 
-{{ .CommonAnnotations.description }}
+• Instance: `{{ .Labels.instance }}`
+
+• Summary:
+{{ .Annotations.summary }}
+
+• Description:
+{{ .Annotations.description }}
+
+{{ end }}
 
 {{ end }}

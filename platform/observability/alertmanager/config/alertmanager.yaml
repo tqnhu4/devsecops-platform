@@ -16,32 +16,14 @@ spec:
 
     slackConfigs:
 
-    - apiURL:
+      - apiURL:
+          name: alertmanager-slack
+          key: api_url
 
-        name: alertmanager-slack
+        channel: "#alerts"
 
-        key: api_url
+        sendResolved: true
 
-      channel: "#alerts"
+        title: '{{ template "slack.title" . }}'
 
-      title: |-
-        [{{ .Status | toUpper }}] {{ .CommonLabels.alertname }}
-
-      text: |-
-        {{ range .Alerts }}
-
-        *Alert:* {{ .Labels.alertname }}
-
-        *Severity:* {{ .Labels.severity }}
-
-        *Summary:* {{ .Annotations.summary }}
-
-        *Description:* {{ .Annotations.description }}
-
-        *Namespace:* {{ .Labels.namespace }}
-
-        *Instance:* {{ .Labels.instance }}
-
-        ----------
-
-        {{ end }}
+        text: '{{ template "slack.body" . }}'
