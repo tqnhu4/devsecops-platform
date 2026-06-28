@@ -68,6 +68,9 @@ alertmanager:
 
     secrets:
       - alertmanager-slack
+      
+    configMaps:
+      - alertmanager-templates
 
     storage:
       volumeClaimTemplate:
