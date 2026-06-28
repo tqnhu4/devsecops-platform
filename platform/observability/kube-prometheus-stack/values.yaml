@@ -65,6 +65,7 @@ alertmanager:
   config:
     templates:
     - /etc/alertmanager/configmaps/alertmanager-templates/*.tmpl    
+    
   alertmanagerSpec:
     replicas: 1
 

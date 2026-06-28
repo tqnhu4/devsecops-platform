@@ -1,5 +1,5 @@
 {{ define "slack.title" }}
-[{{ .Status | upper }}] {{ len .Alerts }} alert(s)
+[{{ .Status}}] {{ len .Alerts }} alert(s)
 {{ end }}
 
 {{ define "slack.body" }}
