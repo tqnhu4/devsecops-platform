@@ -1,27 +1,35 @@
-apiVersion: monitoring.coreos.com/v1alpha1
-kind: AlertmanagerConfig
+receivers:
 
-metadata:
-  name: slack
-  namespace: monitoring
+- name: slack
 
-spec:
+  slackConfigs:
 
-  route:
-    receiver: slack
+  - apiURL:
 
-  receivers:
+      name: alertmanager-slack
 
-    - name: slack
+      key: api_url
 
-      slackConfigs:
+    channel: "#alerts"
 
-      - apiURL:
+    title: |-
+      [{{ .Status | toUpper }}] {{ .CommonLabels.alertname }}
 
-          name: alertmanager-slack
+    text: |-
+      {{ range .Alerts }}
 
-          key: api_url
+      *Alert:* {{ .Labels.alertname }}
 
-        channel: "#alerts"
+      *Severity:* {{ .Labels.severity }}
 
-        sendResolved: true
+      *Summary:* {{ .Annotations.summary }}
+
+      *Description:* {{ .Annotations.description }}
+
+      *Namespace:* {{ .Labels.namespace }}
+
+      *Instance:* {{ .Labels.instance }}
+
+      ----------
+
+      {{ end }}
