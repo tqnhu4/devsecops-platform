@@ -7,10 +7,6 @@ metadata:
 
 spec:
 
-  templates:
-
-  - '/etc/alertmanager/templates/*.tmpl'
-
   route:
     receiver: slack
     
